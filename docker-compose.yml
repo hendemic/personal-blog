@@ -14,7 +14,7 @@ services:
     ports:
       - "1337:1337"
     restart: unless-stopped
-    command: npm run develop
+    command: yarn develop
 
   frontend:
     build:
@@ -37,4 +37,4 @@ services:
       NODE_ENV: development
       HOST: 0.0.0.0
     restart: unless-stopped
-    command: npm run dev:docker
+    command: yarn dev:docker
