@@ -17,6 +17,7 @@ This document contains information to help Claude Code assist with development o
 
 - Docker Compose setup for local development
 - The project uses the production Railway database directly in development
+- Project uses Yarn as the package manager (not npm)
 
 ## Common Commands
 
@@ -43,10 +44,10 @@ docker-compose down
 docker-compose exec backend sh
 
 # Install a new package
-docker-compose exec backend npm install <package-name>
+docker-compose exec backend yarn add <package-name>
 
 # Run Strapi CLI commands
-docker-compose exec backend npm run strapi <command>
+docker-compose exec backend yarn strapi <command>
 ```
 
 ### Frontend (Nuxt)
@@ -56,14 +57,14 @@ docker-compose exec backend npm run strapi <command>
 docker-compose exec frontend sh
 
 # Install a new package
-docker-compose exec frontend npm install <package-name>
+docker-compose exec frontend yarn add <package-name>
 ```
 
 ## Configuration Files
 
 - `.env` - Contains environment variables (not committed to git)
 - `docker-compose.yml` - Docker Compose configuration
-- `backend/Dockerfile.dev` - Dockerfile for Strapi development
+- `backend/Dockerfile.dev` - Dockerfile for Strapi development (uses Node 20.12.2)
 - `frontend/Dockerfile.dev` - Dockerfile for Nuxt development
 
 ## Notes for Claude
@@ -72,3 +73,4 @@ docker-compose exec frontend npm install <package-name>
 - The backend is a git submodule connected to Railway
 - The project uses production database in development (personal choice for this project)
 - When testing, make sure to use a local test data approach rather than affecting production data
+- IMPORTANT: Project uses Yarn instead of npm for all package management
