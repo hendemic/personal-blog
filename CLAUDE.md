@@ -8,6 +8,7 @@ This document contains information to help Claude Code assist with development o
   - Postgres database hosted on Railway
   - Environment variables managed through Railway
   - GraphQL plugin enabled
+  - Digital Ocean Spaces for media storage
 
 - **Frontend**: Nuxt.js application
   - Vue 3 based frontend
@@ -66,6 +67,16 @@ docker-compose exec frontend yarn add <package-name>
 - `docker-compose.yml` - Docker Compose configuration
 - `backend/Dockerfile.dev` - Dockerfile for Strapi development (uses Node 20.12.2)
 - `frontend/Dockerfile.dev` - Dockerfile for Nuxt development
+
+## Digital Ocean Spaces Configuration
+
+Required environment variables for Digital Ocean Spaces:
+- `DO_SPACE_ACCESS_KEY` - Digital Ocean Spaces access key
+- `DO_SPACE_SECRET_KEY` - Digital Ocean Spaces secret key
+- `DO_SPACE_ENDPOINT` - Digital Ocean Spaces endpoint (e.g., 'nyc3.digitaloceanspaces.com')
+- `DO_SPACE_BUCKET` - Digital Ocean Spaces bucket name
+- `DO_SPACE_REGION` - Digital Ocean Spaces region (e.g., 'nyc3')
+- `DO_SPACE_BASE_URL` - (Optional) CDN URL if configured
 
 ## Notes for Claude
 
