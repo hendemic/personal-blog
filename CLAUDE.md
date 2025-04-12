@@ -90,13 +90,30 @@ Required environment variables for Digital Ocean Spaces:
 
 This project uses Strapi v5 with GraphQL. Here are reference queries for common operations:
 
-### Posts Query with Dynamic Content Zones
+### Posts Queries
+
+#### Basic Posts Query (for listing)
+
+```graphql
+query {
+  posts {
+    title
+    description
+    publishDate
+    slug
+  }
+}
+```
+
+#### Complete Posts Query with Dynamic Content Zones
 
 ```graphql
 query {
   posts {
     title
     slug
+    description
+    publishDate
     publishedAt
     updatedAt
     content {
@@ -149,3 +166,18 @@ query {
 - Dynamic Zones require explicit type selection with fragments
 - Media fields need nested selection of properties (url, width, etc.)
 - Always check field names in GraphQL playground before writing queries
+- Do NOT include `id` field in queries - it's not directly accessible in this schema
+- Use the GraphQL playground at http://localhost:1337/graphql to test queries
+- Check the "Docs" tab in GraphQL playground to see the exact schema structure
+
+## Development Workflow
+
+### GraphQL Implementation Process
+
+When implementing new GraphQL queries:
+
+1. First draft the query in isolation
+2. Test the query in the GraphQL playground at http://localhost:1337/graphql before implementing in code
+3. Have the user confirm the query works as intended
+4. Only after confirmation, implement the query in the application code
+5. Document any new queries in this file for future reference
