@@ -26,39 +26,39 @@ This document contains information to help Claude Code assist with development o
 
 ```bash
 # Start the development environment
-docker-compose up -d
+docker compose up -d
 
 # View logs
-docker-compose logs -f
+docker compose logs -f
 
 # Rebuild containers
-docker-compose build
+docker compose build
 
 # Stop containers
-docker-compose down
+docker compose down
 ```
 
 ### Backend (Strapi)
 
 ```bash
 # Access Strapi container
-docker-compose exec backend sh
+docker compose exec backend sh
 
 # Install a new package
-docker-compose exec backend yarn add <package-name>
+docker compose exec backend yarn add <package-name>
 
 # Run Strapi CLI commands
-docker-compose exec backend yarn strapi <command>
+docker compose exec backend yarn strapi <command>
 ```
 
 ### Frontend (Nuxt)
 
 ```bash
 # Access Nuxt container
-docker-compose exec frontend sh
+docker compose exec frontend sh
 
 # Install a new package
-docker-compose exec frontend yarn add <package-name>
+docker compose exec frontend yarn add <package-name>
 ```
 
 ## Configuration Files
