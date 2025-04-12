@@ -85,3 +85,67 @@ Required environment variables for Digital Ocean Spaces:
 - The project uses production database in development (personal choice for this project)
 - When testing, make sure to use a local test data approach rather than affecting production data
 - IMPORTANT: Project uses Yarn instead of npm for all package management
+
+## GraphQL Schema Reference
+
+This project uses Strapi v5 with GraphQL. Here are reference queries for common operations:
+
+### Posts Query with Dynamic Content Zones
+
+```graphql
+query {
+  posts {
+    title
+    slug
+    publishedAt
+    updatedAt
+    content {
+      __typename
+      ... on ComponentContentBlockHeadingBlock {
+        heading
+        level
+      }
+      ... on ComponentContentBlockTextBlock {
+        text
+      }
+      ... on ComponentContentBlockMediaGrid {
+        images {
+          caption
+          image {
+            url
+            alternativeText
+          }
+        }
+      }
+      ... on ComponentContentBlockImageBlock {
+        caption
+        image {
+          url
+          width
+          height
+          alternativeText
+          formats
+        }
+      }
+    }
+  }
+}
+```
+
+### Landing Page Query
+
+```graphql
+query {
+  landingPage {
+    Title
+    Description
+  }
+}
+```
+
+### Important Notes on GraphQL in Strapi v5
+
+- Response format is flattened compared to v4 (no data/attributes nesting)
+- Dynamic Zones require explicit type selection with fragments
+- Media fields need nested selection of properties (url, width, etc.)
+- Always check field names in GraphQL playground before writing queries
